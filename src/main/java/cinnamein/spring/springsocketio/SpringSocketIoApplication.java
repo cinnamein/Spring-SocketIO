@@ -1,13 +1,13 @@
-package cinnamein.spring.socketio;
+package cinnamein.spring.springsocketio;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringChattingApplication {
+public class SpringSocketIoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringChattingApplication.class, args);
+        SpringApplication.run(SpringSocketIoApplication.class, args);
     }
 
 }
