@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket.IO Client</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+<h1>Socket.IO Client</h1>
+<script>
+    // 서버에서 전달된 roomId를 가져옵니다.
+    const roomId = [[${roomId}]];
+
+    // Socket.IO 서버에 연결합니다.
+    const socket = io('http://localhost:9092');
+
+    socket.on('connect', () => {
+        console.log('Connected to server');
+        // 서버에 특정 room에 조인하라는 이벤트를 보냅니다.
+        socket.emit('joinRoom', roomId);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('Disconnected from server');
+    });
+
+    socket.on('chatMessage', (message) => {
+        console.log('Received message: ' + message);
+    });
+
+    const sendMessage = (message) => {
+        socket.emit('chatMessage', message);
+    };
+
+    // 테스트 메시지 전송
+    setTimeout(() => {
+        sendMessage('Hello, room ' + roomId + '!');
+    }, 2000);
+</script>
+</body>
+</html>
